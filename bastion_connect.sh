@@ -1,5 +1,5 @@
 #!/bin/bash
-ssh -i ~/Downloads/chenkey.pem ubuntu@13.60.251.110
+#ssh -i ~/Downloads/chenkey.pem ubuntu@13.60.59.241
 #KEY_PATH=~/Downloads/chenkey.pem
 mv -f chenkey.pem ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
