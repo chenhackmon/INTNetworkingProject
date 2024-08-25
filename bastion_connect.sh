@@ -2,11 +2,11 @@
 #ssh -i ~/Downloads/chenkey.pem ubuntu@13.60.59.241
 #KEY_PATH=~/Downloads/chenkey.pem
 #mv -f chenkey.pem ~/.ssh/id_rsa
-mv -f chenkey.pem ~/Downloads/chenkey.pem
-chmod 400 ~/Downloads/chenkey.pem
+mv -f chenkey.pem ~/chenkey.pem
+chmod 400 ~/chenkey.pem
 #chmod 400 ~/.ssh/id_rsa
 #KEY_PATH_2=/home/ubuntu/.ssh/id_rsa
-KEY_PATH_2=~/Downloads/chenkey.pem
+KEY_PATH_2=~/chenkey.pem
 # Check if KEY_PATH environment variable is set
 if [ -z "$KEY_PATH" ]; then
   echo "KEY_PATH env var is expected"
