@@ -1,12 +1,8 @@
 #!/bin/bash
-#ssh -i ~/Downloads/chenkey.pem ubuntu@13.60.59.241
-#KEY_PATH=~/Downloads/chenkey.pem
-#mv -f chenkey.pem ~/.ssh/id_rsa
-mv -f chenkey.pem ~/chenkey.pem
-chmod 400 ~/chenkey.pem
-#chmod 400 ~/.ssh/id_rsa
-#KEY_PATH_2=/home/ubuntu/.ssh/id_rsa
-KEY_PATH_2=~/chenkey.pem
+
+#KEY_PATH=/home/omer/omerNetworkingPTJkeypair.pem
+KEY_PATH_2=/home/ubuntu/.ssh/id_rsa
+
 # Check if KEY_PATH environment variable is set
 if [ -z "$KEY_PATH" ]; then
   echo "KEY_PATH env var is expected"
@@ -33,8 +29,7 @@ scp_to_public_instance() {
   REMOTE_FILE=$3
   scp -i "$KEY_PATH" "$LOCAL_FILE" ubuntu@$PUBLIC_IP:"$REMOTE_FILE"
 }
-#scp -i ~/Downloads/chenkey.pem /home/chen/Downloads/chenkey.pem ubuntu@16.171.60.136:/home/ubuntu
-
+#scp -i ~/Downloads/guy_networking_project_keypair.pem /home/guy/Downloads/guy_networking_project_keypair.pem ubuntu@16.171.60.136:/home/ubuntu
 
 
 # If only bastion IP is provided, connect to the bastion host
@@ -48,5 +43,3 @@ else
     ssh -t -i "$KEY_PATH" ubuntu@"$BASTION_IP" "ssh -i $KEY_PATH_2 ubuntu@$PRIVATE_IP '$COMMAND'"
   fi
 fi
-
-#
