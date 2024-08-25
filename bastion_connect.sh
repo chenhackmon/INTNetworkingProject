@@ -1,9 +1,4 @@
 #!/bin/bash
-#ssh -i ~/Downloads/chenkey.pem ubuntu@13.60.59.241
-#KEY_PATH=~/Downloads/chenkey.pem
-mv -f chenkey.pem ~/.ssh/id_rsa
-chmod 400 ~/.ssh/id_rsa
-KEY_PATH_2=/home/ubuntu/.ssh/id_rsa
 
 # Check if KEY_PATH environment variable is set
 if [ -z "$KEY_PATH" ]; then
@@ -22,29 +17,21 @@ BASTION_IP=$1
 PRIVATE_IP=$2
 COMMAND=$3
 
-scp_to_public_instance() {
-  if [ -z "$3" ]; then
-    echo "Usage: $0 <public-instance-ip> <local-file-path> <remote-file-path>"
-    exit 5
-  fi
-  LOCAL_FILE=$2
-  REMOTE_FILE=$3
-  scp -i "$KEY_PATH" "$LOCAL_FILE" ubuntu@$PUBLIC_IP:"$REMOTE_FILE"
-}
-#scp -i ~/Downloads/chenkey.pem /home/chen/Downloads/chenkey.pem ubuntu@16.171.60.136:/home/ubuntu
+# Ensure the .ssh directory exists
+mkdir -p ~/.ssh
 
-
+# Copy and set permissions for the key
+cp "$KEY_PATH" ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa
 
 # If only bastion IP is provided, connect to the bastion host
 if [ -z "$PRIVATE_IP" ]; then
-  ssh -i "$KEY_PATH" ubuntu@"$BASTION_IP"
+  ssh -i ~/.ssh/id_rsa ubuntu@"$BASTION_IP"
 else
   # If both bastion IP and private IP are provided, connect to the private host through the bastion host
   if [ -z "$COMMAND" ]; then
-    ssh -t -i "$KEY_PATH" ubuntu@"$BASTION_IP" "ssh -i $KEY_PATH_2 ubuntu@$PRIVATE_IP"
+    ssh -t -i ~/.ssh/id_rsa ubuntu@"$BASTION_IP" "ssh -i ~/.ssh/id_rsa ubuntu@$PRIVATE_IP"
   else
-    ssh -t -i "$KEY_PATH" ubuntu@"$BASTION_IP" "ssh -i $KEY_PATH_2 ubuntu@$PRIVATE_IP '$COMMAND'"
+    ssh -t -i ~/.ssh/id_rsa ubuntu@"$BASTION_IP" "ssh -i ~/.ssh/id_rsa ubuntu@$PRIVATE_IP '$COMMAND'"
   fi
 fi
-
-#
