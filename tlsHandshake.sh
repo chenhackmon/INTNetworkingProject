@@ -138,4 +138,4 @@ if [ "$DECRYPTED_MESSAGE" != "$SAMPLE_MESSAGE" ]; then
     exit 6
 else
     echo "Client-Server TLS handshake has been completed successfully."
-fi1
+fi
