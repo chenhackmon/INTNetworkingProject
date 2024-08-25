@@ -1,26 +1,36 @@
 Local DNS Server IP
 -------------------
-<ip-here>
+127.0.0.53
 
 
 
 Default gateway IP
 -------------------
-<ip-here>
-
+10.0.0.1
 
 
 DHCP IP allocation sys-logs
 -------------------
-<logs-here>
-
+2024-08-24T09:28:39.296729+00:00 ip-10-0-0-42 dhcpcd[451]: dhcpcd-10.0.6 starting
+2024-08-24T09:28:39.296737+00:00 ip-10-0-0-42 dhcpcd[454]: DUID 00:01:00:01:2e:5c:64:42:06:7b:d7:08:28:63
+2024-08-24T09:28:39.296743+00:00 ip-10-0-0-42 dhcpcd[454]: ens5: IAID d7:08:28:63
+2024-08-24T09:28:39.296749+00:00 ip-10-0-0-42 dhcpcd[454]: ens5: soliciting a DHCP lease
+2024-08-24T09:28:39.296755+00:00 ip-10-0-0-42 dhcpcd[454]: ens5: offered 10.0.0.42 from 10.0.0.1
+2024-08-24T09:28:39.296760+00:00 ip-10-0-0-42 dhcpcd[454]: ens5: leased 10.0.0.42 for 3600 seconds
+2024-08-24T09:28:39.296789+00:00 ip-10-0-0-42 dhcpcd[454]: ens5: adding route to 10.0.0.0/24
+2024-08-24T09:28:39.296794+00:00 ip-10-0-0-42 dhcpcd[454]: ens5: adding default route via 10.0.0.1
+2024-08-24T09:28:39.296801+00:00 ip-10-0-0-42 dhcpcd[454]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only ens5
+2024-08-24T09:28:39.296935+00:00 ip-10-0-0-42 systemd-networkd[522]: ens5: DHCPv4 address 10.0.0.42/24, gateway 10.0.0.1 acquired from 10.0.0.1
+2024-08-24T10:05:06.459621+00:00 ip-10-0-0-42 systemd-networkd[522]: ens5: DHCPv6 lease lost
+2024-08-24T10:05:06.549204+00:00 ip-10-0-0-42 systemd-networkd[4641]: ens5: DHCPv4 address 10.0.0.42/24, gateway 10.0.0.1 acquired from 10.0.0.1
 
 
 Public to private num of hops
 -------------------
-<answer-here>
+1
 
 
 DNS queries from the private instance
 -------------------
-<answer-here>
+I don't have DNS resolution or a DNS server, so it's not working.
+
